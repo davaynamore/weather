@@ -1,0 +1,14 @@
+.slider_card {
+  border-radius: 10px;
+
+  &>* {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .ant-slider-handle {
+    background-color: #1890ff;
+  }
+}
