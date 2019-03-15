@@ -1,2 +1,3 @@
 import withSliderData from './with-slider-data';
-export { withSliderData };
+import withChartData from './with-chart-data';
+export { withSliderData, withChartData };

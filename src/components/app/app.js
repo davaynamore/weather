@@ -1,50 +1,43 @@
-import React, { Component } from 'react';
-import { PressureSlider, TemperatureSlider } from '../sliders';
-import Chart from '../chart';
-
-import { Row, Col } from 'antd';
-
+import React from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { ForecastPage, StaticPage } from '../pages';
+import { Layout, Menu } from 'antd';
 import './app.scss';
+const { Header, Content, Footer } = Layout;
 
-class App extends Component {
-
-  state = {
-    pressure: 1000,
-    temperature: 23
-  }
-
-  getPressure = (pressure) => {
-    this.setState({ pressure });
-  }
-
-  getTemperature = (temperature) => {
-    this.setState({ temperature });
-  }
-
-  render() {
-
-    const {temperature, pressure} = this.state;
-
-    return (
-      <div className="app">
-        <div className="container">
-          <Row type="flex" justify="space-between">
-            <Col span={10}>
-              <PressureSlider getValue={this.getPressure} />
-            </Col>
-            <Col span={10}>
-              <TemperatureSlider getValue={this.getTemperature} />
-            </Col>
-          </Row>
-          <Row type="flex" justify="center">
-            <Col>
-              <Chart pressure={pressure} temperature={temperature} />
-            </Col>
-          </Row>
-        </div>
-      </div>
-    );
-  }
+const App = () => {
+  return (
+    <Router>
+      <Layout className="layout">
+        <Header>
+          <div className="logo" />
+          <Menu
+            className="menu"
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={['1']}>
+            <Menu.Item key="1">
+              <Link to="/">Intro</Link>
+            </Menu.Item>
+            <Menu.Item key="2">
+              <Link to="/forecast">Forecast</Link>
+            </Menu.Item>
+          </Menu>
+        </Header>
+        <Content>
+          <div className="content">
+            <div className="app">
+              <Route path="/" exact component={StaticPage} />
+              <Route path="/forecast" component={ForecastPage} />
+            </div>
+          </div>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>
+          ForecastApp ©2019 Created by Sergey Chuprina
+        </Footer>
+      </Layout>
+    </Router>
+  )
 }
 
 export default App;
