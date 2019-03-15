@@ -1,4 +1,6 @@
-const forecastData = {
+export default class WeatherApiService {
+
+  forecastData = {
   "request": "Amount of rainfall by day",
   "days": [{
     "day": 1,
@@ -24,8 +26,8 @@ const forecastData = {
   }]
 }
 
-export default class WeatherApiService {
+// just for fun this function is async
   async getForecast() {
-    return await forecastData;
+    return await this.forecastData.days;
   }
 }

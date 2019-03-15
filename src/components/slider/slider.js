@@ -3,7 +3,7 @@ import { Card, Slider } from 'antd';
 import './slider.scss';
 
 
-const SliderElement = ({ data, getData }) => {
+const SliderElement = ({ data, getValue }) => {
 
   const { min, max, title, measure } = data;
   const average = (min + max) / 2;
@@ -13,7 +13,7 @@ const SliderElement = ({ data, getData }) => {
     <Card className="slider_card" >
       {cardTitle}
       <Slider
-        onChange={getData}
+        onChange={getValue}
         defaultValue={average}
         min={min}
         max={max}
